@@ -4,6 +4,7 @@ import { login } from "../utils/UserUtil";
 import { useDispatch } from "react-redux";
 import { setLoggedUser } from "../features/userSlice";
 import { useEffect } from "react";
+import UserNav from "./UserNav";
 
 function LogInRegister() {
   const [id, setId] = useState("");
@@ -72,46 +73,48 @@ function LogInRegister() {
   };
 
   return (
-    <form>
-      <h3>כניסת מנהל</h3>
-      <label htmlFor="teacherId">הכנס מספר ת"ז</label>
-      <input
-        type="text"
-        placeholder="תעודת זהות"
-        onChange={handleChangeId}
-        name="id"
-      />
-      <br />
-      <label htmlFor="password">הכנס סיסמה</label>
-      <input
-        type="password"
-        placeholder="סיסמה"
-        onChange={handleChangePassword}
-        name="password"
-      />
-      <br />
+    <>
+      <form>
+        <h3>כניסת מנהל</h3>
+        <label htmlFor="teacherId">הכנס מספר ת"ז</label>
+        <input
+          type="text"
+          placeholder="תעודת זהות"
+          onChange={handleChangeId}
+          name="id"
+        />
+        <br />
+        <label htmlFor="password">הכנס סיסמה</label>
+        <input
+          type="password"
+          placeholder="סיסמה"
+          onChange={handleChangePassword}
+          name="password"
+        />
+        <br />
 
-      <button onClick={handleClickLoginManager}>התחבר</button>
+        <button onClick={handleClickLoginManager}>התחבר</button>
 
-      <h3>כניסת מורה</h3>
-      <label htmlFor="teacherId">הכנס מספר ת"ז</label>
-      <input
-        type="text"
-        placeholder="תעודת זהות"
-        onChange={handleChangeId}
-        name="id"
-      />
-      <br />
-      <label htmlFor="password">הכנס סיסמה</label>
-      <input
-        type="password"
-        placeholder="סיסמה"
-        onChange={handleChangePassword}
-        name="password"
-      />
-      <br />
-      <button onClick={handleClickLoginTeacher}>התחבר</button>
-    </form>
+        <h3>כניסת מורה</h3>
+        <label htmlFor="teacherId">הכנס מספר ת"ז</label>
+        <input
+          type="text"
+          placeholder="תעודת זהות"
+          onChange={handleChangeId}
+          name="id"
+        />
+        <br />
+        <label htmlFor="password">הכנס סיסמה</label>
+        <input
+          type="password"
+          placeholder="סיסמה"
+          onChange={handleChangePassword}
+          name="password"
+        />
+        <br />
+        <button onClick={handleClickLoginTeacher}>התחבר</button>
+      </form>
+    </>
   );
 }
 

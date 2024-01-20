@@ -1,17 +1,18 @@
 import React from "react";
-import UserNav from "./UserNav";
 
-function HomePageManager() {
-  return(
-    <>
-    <div> שלום</div>
-    <nav>
-      <button>מורים</button>
-      <button>תלמידים</button>
-      <button>אירעים</button>
-      <button>תשלומים</button>
-    </nav>
-    </>
-  )
+const HomePageManager = async() => {
+  return (
+    <div>
+      <span>שלום {{}}</span>
+      <nav>
+        <button>מורים</button>
+        <button>תלמידים</button>
+        <button>אירעים</button>
+        <button>תשלומים</button>
+      </nav>
+    </div>
+  );
 }
+
+  
 export default HomePageManager;
