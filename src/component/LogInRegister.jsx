@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../utils/UserUtil";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLoggedUser } from "../features/userSlice";
 import { useEffect } from "react";
-import UserNav from "./UserNav";
+import {userSlice} from "../features/userSlice"
 
 function LogInRegister() {
   const [id, setId] = useState("");
@@ -12,32 +12,33 @@ function LogInRegister() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  //const loggedUser = useSelector(state=>state.user.setLoggedUser)
 
-  useEffect(() => {
-    setPassword("");
-    setId("");
-  }, [error]);
+  // useEffect(() => {
+  //   setPassword("");
+  //   setId("");
+  // }, [error]);
 
   const handleClickLoginManager = async () => {
-    if (id === "" || password === "") {
+    if (id == "" || password == "") {
       setError("חובה למלא את השדות");
-      dispatch(setLoggedUser(""));
+      //dispatch(setLoggedUser(""));
     }
-    try {
-      const res = await login(id, password);
-      if (res.status === 200) {
-        console.log(res);
-        dispatch(setLoggedUser(res));
-        navigate("homePageManager");
-      } else {
-        setError("אחד הפרטים שגויים");
-        dispatch(setLoggedUser(""));
-      }
-    } catch (error) {
-      setError(error.message);
-      dispatch(setLoggedUser(""));
-      console.log(error.message);
-    }
+    // try {
+    //   const res = await login(id, password);
+    //   if (res.status === 200) {
+    //     console.log(res);
+    //     dispatch(setLoggedUser(res));
+    //     navigate("/homePageManager");
+    //   } else {
+    //     setError("אחד הפרטים שגויים");
+    //     dispatch(setLoggedUser(""));
+    //   }
+    // } catch (error) {
+    //   setError(error.message);
+    //   dispatch(setLoggedUser(""));
+    //   console.log(error.message);
+    // }
   };
 
   const handleClickLoginTeacher = async () => {
@@ -79,11 +80,13 @@ function LogInRegister() {
         <label htmlFor="teacherId">הכנס מספר ת"ז</label>
         <input
           type="text"
-          placeholder="תעודת זהות"
+          //placeholder="תעודת זהות"
           onChange={handleChangeId}
           name="id"
         />
         <br />
+        {error}
+        
         <label htmlFor="password">הכנס סיסמה</label>
         <input
           type="password"

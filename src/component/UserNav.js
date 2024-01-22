@@ -7,7 +7,7 @@ function UserNav() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleClickLogOut = () => {
-    navigate('homePage');
+    navigate("/homePage");
     dispatch(setLoggedUser(null));
   };
 
@@ -15,8 +15,8 @@ function UserNav() {
     <div>
       <header>אוקטבה - בית הספר לנגינה ושירה</header>
       <nav>
-        <button onClick={handleClickLogOut}>התנתקות</button>
-        <Link to={"logInRegister"}>הרשמה/כניסה מנהל/מורה</Link>
+        <button onClick={handleClickLogOut}>התנתקות</button><br></br>
+        <Link to={"logInRegister"}>כניסת מנהל/מורה</Link>
         <Link to={"about"}>אודותינו</Link>
         <Link to={"contactUs"}>צור קשר</Link>
         <Link to={"concerts"}>הופעות</Link>

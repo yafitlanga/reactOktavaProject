@@ -7,6 +7,7 @@ import Concerts from "./component/Concerts";
 import ContactUs from "./component/ContactUs";
 import LogInRegister from "./component/LogInRegister";
 import HomePageManager from "./component/HomePageManager";
+import AllTeachers from "./component/AllTeachers";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="logInRegister" element={<LogInRegister />}></Route>
           <Route path="concerts" element={<Concerts />}></Route>
           <Route path="homePageManager" element={<HomePageManager />}></Route>
+          <Route path="allTeachers" element={<AllTeachers />}></Route>
         </Route>
       </Routes>
     </div>
