@@ -4,7 +4,7 @@ import { login } from "../utils/UserUtil";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoggedUser } from "../features/userSlice";
 import { useEffect } from "react";
-import {userSlice} from "../features/userSlice"
+import { userSlice } from "../features/userSlice";
 
 function LogInRegister() {
   const [id, setId] = useState("");
@@ -24,33 +24,33 @@ function LogInRegister() {
       setError("חובה למלא את השדות");
       //dispatch(setLoggedUser(""));
     }
-    // try {
-    //   const res = await login(id, password);
-    //   if (res.status === 200) {
-    //     console.log(res);
-    //     dispatch(setLoggedUser(res));
-    //     navigate("/homePageManager");
-    //   } else {
-    //     setError("אחד הפרטים שגויים");
-    //     dispatch(setLoggedUser(""));
-    //   }
-    // } catch (error) {
-    //   setError(error.message);
-    //   dispatch(setLoggedUser(""));
-    //   console.log(error.message);
-    // }
+    try {
+      const res = await login(id, password);
+      if (res) {
+        console.log(res);
+        // dispatch(setLoggedUser(res));
+        navigate("homePageManager");
+      } else {
+        setError("אחד הפרטים שגויים");
+        // dispatch(setLoggedUser(""));
+      }
+    } catch (error) {
+      setError(error.message);
+      // dispatch(setLoggedUser(""));
+      console.log(error.message);
+    }
   };
 
   const handleClickLoginTeacher = async () => {
     if (id === "" || password === "") {
       setError("חובה למלא את השדות");
-      dispatch(setLoggedUser(""));
+      // dispatch(setLoggedUser(""));
     }
     try {
       const res = await login(id, password);
-      if (res.status === 200) {
+      if (res) {
         console.log(res);
-        dispatch(setLoggedUser(res));
+        // dispatch(setLoggedUser(res));
         navigate("homePageManager");
       } else {
         setError("אחד הפרטים שגויים");
@@ -80,19 +80,21 @@ function LogInRegister() {
         <label htmlFor="teacherId">הכנס מספר ת"ז</label>
         <input
           type="text"
+          value={id}
           //placeholder="תעודת זהות"
           onChange={handleChangeId}
           name="id"
         />
         <br />
         {error}
-        
+
         <label htmlFor="password">הכנס סיסמה</label>
         <input
           type="password"
           placeholder="סיסמה"
           onChange={handleChangePassword}
           name="password"
+          value={password}
         />
         <br />
 
@@ -105,6 +107,7 @@ function LogInRegister() {
           placeholder="תעודת זהות"
           onChange={handleChangeId}
           name="id"
+          value={id}
         />
         <br />
         <label htmlFor="password">הכנס סיסמה</label>
@@ -113,6 +116,7 @@ function LogInRegister() {
           placeholder="סיסמה"
           onChange={handleChangePassword}
           name="password"
+          value={password}
         />
         <br />
         <button onClick={handleClickLoginTeacher}>התחבר</button>
