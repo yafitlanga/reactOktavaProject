@@ -8,15 +8,14 @@ function HomePageManager() {
   const [error, setError] = useState("");
 
   const handleClickTeachers = async () => {
-    try {
-      navigate("allTeachers");
-      const res = await getUsers();
-      if (res.status === 200) {
+    const res = await getUsers();
+    try {    
+      if (res) {
         console.log(res);
-        navigate("/allTeachers");
+        navigate("allTeachers");
       } else {
-        setError("page not found");
-        console.log(error.message);
+        setError(error.message);
+        console.log("page not found");
       }
     } catch (error) {
       setError(error.message);

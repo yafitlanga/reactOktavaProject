@@ -14,14 +14,15 @@ function LogInRegister() {
   const dispatch = useDispatch();
   //const loggedUser = useSelector(state=>state.user.setLoggedUser)
 
-  // useEffect(() => {
-  //   setPassword("");
-  //   setId("");
-  // }, [error]);
+  useEffect(() => {
+    setPassword("");
+    setId("");
+  }, [error]);
 
   const handleClickLoginManager = async () => {
     if (id == "" || password == "") {
       setError("חובה למלא את השדות");
+      console.log("חובה למלא את השדות");
       //dispatch(setLoggedUser(""));
     }
     try {
@@ -81,13 +82,12 @@ function LogInRegister() {
         <input
           type="text"
           value={id}
-          //placeholder="תעודת זהות"
+          placeholder="תעודת זהות"
           onChange={handleChangeId}
           name="id"
         />
         <br />
-        {error}
-
+    
         <label htmlFor="password">הכנס סיסמה</label>
         <input
           type="password"
@@ -100,14 +100,14 @@ function LogInRegister() {
 
         <button onClick={handleClickLoginManager}>התחבר</button>
 
-        <h3>כניסת מורה</h3>
+        {/* <h3>כניסת מורה</h3>
         <label htmlFor="teacherId">הכנס מספר ת"ז</label>
         <input
           type="text"
           placeholder="תעודת זהות"
           onChange={handleChangeId}
           name="id"
-          value={id}
+          //value={id}
         />
         <br />
         <label htmlFor="password">הכנס סיסמה</label>
@@ -116,10 +116,10 @@ function LogInRegister() {
           placeholder="סיסמה"
           onChange={handleChangePassword}
           name="password"
-          value={password}
+          //value={password}
         />
         <br />
-        <button onClick={handleClickLoginTeacher}>התחבר</button>
+        <button onClick={handleClickLoginTeacher}>התחבר</button> */}
       </form>
     </>
   );
